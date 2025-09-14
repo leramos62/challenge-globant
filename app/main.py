@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from . import crud
 
 # Inicializamos la aplicación FastAPI
-app = FastAPI(title="mi api hijs del pico")
+app = FastAPI(title="Ap que recibe archivos csv")
 
 @app.post("/upload-csv/{table_name}", tags=["Carga de Archivos CSV"])
 async def upload_csv_endpoint(table_name: str, file: UploadFile = File(...)):
