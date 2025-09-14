@@ -1,13 +1,18 @@
-# Desafío de Ingeniería de Datos - Globant  -- V 0.1
+# Desafío de Ingeniería de Datos - Globant V. 1.00
 
-Este repositorio contiene la solución al desafío de codificación de Ingeniería de Datos de Globant. El proyecto consiste en una API construida con FastAPI para ingerir y analizar datos de empleados, utilizando Google BigQuery como almacén de datos.
+Este repositorio contiene la solución el desafío de codificación de Ingeniería de Datos. El proyecto es una API construida con FastAPI que implementa un pipeline de ingesta de datos robusto: recibe archivos CSV, los procesa, y los inserta en Google BigQuery en lotes controlados.
 
-## Estado Actual
+## Lógica de Ingesta
 
-Actualmente, se han completado las siguientes secciones:
+La funcionalidad principal de la API es manejar la carga de grandes volúmenes de datos de manera eficiente. En lugar de una simple subida de archivos, el proceso es el siguiente:
 
-*   **Sección 1: API de Ingesta de Datos**
-*   **Sección 2: API de Métricas y Consultas**
+1.  La API recibe un archivo CSV a través de un endpoint.
+2.  El código lee el archivo en memoria, línea por línea.
+3.  Las filas se agrupan en lotes (chunks) de hasta 1000 registros.
+4.  Cada lote se convierte a formato JSON y se inserta en BigQuery mediante el método de "streaming inserts".
+5.  Este proceso se repite hasta que se han insertado todas las filas del archivo.
+
+Este enfoque cumple con todos los requisitos de la Sección 1 en una sola operación.
 
 ---
 
@@ -24,12 +29,11 @@ Actualmente, se han completado las siguientes secciones:
 ### Prerrequisitos
 
 *   Python 3.8+
-*   Google Cloud SDK (`gcloud`) configurado
-*   Un proyecto en Google Cloud con la API de BigQuery habilitada
+*   Un proyecto en Google Cloud con la API de BigQuery habilitada.
 
 ### 1. Configuración del Entorno
 
-1.  **Clonar el repositorio (o descargar los archivos):**
+1.  **Clonar el repositorio:**
     ```bash
     git clone [URL-DEL-REPOSITORIO]
     cd [NOMBRE-DEL-REPOSITORIO]
@@ -53,7 +57,7 @@ Actualmente, se han completado las siguientes secciones:
 
 ### 2. Configuración de Credenciales de GCP
 
-1.  **Cuenta de Servicio:** Asegúrate de tener un archivo de credenciales JSON de una cuenta de servicio de GCP con los roles `Editor de datos de BigQuery` y `Usuario de trabajos de BigQuery`.
+1.  **Cuenta de Servicio:** Asegúrate de tener un archivo de credenciales JSON de una cuenta de servicio de GCP con el rol `Editor de datos de BigQuery`.
 2.  **Renombrar y Mover:** Coloca el archivo de credenciales en la raíz del proyecto y renómbralo a `gcp-credentials.json`.
 3.  **Archivo `.env`:** Crea un archivo llamado `.env` en la raíz del proyecto y añade la siguiente configuración, reemplazando los valores correspondientes:
     ```ini
