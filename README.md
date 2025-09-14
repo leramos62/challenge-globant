@@ -1,4 +1,4 @@
-# Desafío de Ingeniería de Datos - Globant  -- V 0.1
+# Desafío de Ingeniería de Datos - Globant  -- V 0.2
 
 Este repositorio contiene la solución al desafío de codificación de Ingeniería de Datos de Globant. El proyecto consiste en una API construida con FastAPI para ingerir y analizar datos de empleados, utilizando Google BigQuery como almacén de datos.
 
@@ -7,7 +7,7 @@ Este repositorio contiene la solución al desafío de codificación de Ingenier�
 Actualmente, se han completado las siguientes secciones:
 
 *   **Sección 1: API de Ingesta de Datos**
-*   **Sección 2: API de Métricas y Consultas**
+*   **Sección 2: Consultas SQL **
 
 ---
 
