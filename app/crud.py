@@ -55,7 +55,7 @@ def process_and_insert_csv_in_batches(file_content: bytes, table_name: str):
             
             batch.append(row_dict) # añade la fila procesada al lote actual
 
-            # --- 5. inserta el lote al llegar a batch=1000 ---
+            # --- 5. inserta el lote al llegar a batch=1000  ---
             if len(batch) == BATCH_SIZE:
                 errors = client.insert_rows_json(table_id, batch) 
                 if errors:
