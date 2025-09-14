@@ -1,0 +1,23 @@
+WITH
+  empleados_contratados_2021 AS (
+    SELECT
+      dep.id,
+      dep.department,
+      COUNT(hem.id) AS hired
+    FROM
+      `quantum-bonus-472119-e1.globant_challenge_dataset.hired_employees` AS hem
+    JOIN
+      `quantum-bonus-472119-e1.globant_challenge_dataset.departments` AS dep
+      ON hem.department_id = dep.id
+    WHERE
+    EXTRACT(YEAR FROM hem.datetime) = 2021
+    
+    GROUP BY
+      dep.id, dep.department
+  )
+
+  SELECT  *
+  FROM  empleados_contratados_2021
+  WHERE  hired > (SELECT AVG(hired) FROM empleados_contratados_2021)
+  ORDER BY
+      hired DESC;

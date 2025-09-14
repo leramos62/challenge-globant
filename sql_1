@@ -1,0 +1,21 @@
+select  
+dep.department,
+jos.job,
+    count(EXTRACT(QUARTER FROM hem.datetime) = 1) AS quarter_1,
+    count(EXTRACT(QUARTER FROM hem.datetime) = 2) AS quarter_2,
+    count(EXTRACT(QUARTER FROM hem.datetime) = 3) AS quarter_3,
+    count(EXTRACT(QUARTER FROM hem.datetime) = 4) AS quarter_4
+FROM
+    `quantum-bonus-472119-e1.globant_challenge_dataset.hired_employees` hem
+JOIN
+    `quantum-bonus-472119-e1.globant_challenge_dataset.departments` AS dep
+    ON hem.department_id = dep.id
+JOIN
+    `quantum-bonus-472119-e1.globant_challenge_dataset.jobs` AS jos
+    ON hem.job_id = jos.id
+WHERE
+    EXTRACT(YEAR FROM hem.datetime) = 2021
+group by
+dep.department,
+jos.job
+order by 1,2 
