@@ -2,15 +2,12 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from . import crud
 
 # Inicializamos la aplicación FastAPI
-app = FastAPI(title="GLOBANT CHALLENGE -API CARGA")
+app = FastAPI(title="mi api hijs del pico")
 
 @app.post("/upload-csv/{table_name}", tags=["Carga de Archivos CSV"])
 async def upload_csv_endpoint(table_name: str, file: UploadFile = File(...)):
     """
-    Endpoint para recibir un archivo CSV y cargarlo a una tabla de BQ.
-
-    - **table_name**: debe ser `departments`, `jobs`, o `hired_employees`.
-    - **file**: earchivo CSV .
+    carga tu wea
     """
     # Vvalidacion ed tablas permitidas
     allowed_tables = ["departments", "jobs", "hired_employees"]
