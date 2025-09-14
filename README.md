@@ -1,18 +1,13 @@
-# Desafío de Ingeniería de Datos - Globant V. 1.00
+# Desafío de Ingeniería de Datos - Globant  -- V 0.1
 
 Este repositorio contiene la solución el desafío de codificación de Ingeniería de Datos. El proyecto es una API construida con FastAPI que implementa un pipeline de ingesta de datos robusto: recibe archivos CSV, los procesa, y los inserta en Google BigQuery en lotes controlados.
 
-## Lógica de Ingesta
+## Estado Actual
 
-La funcionalidad principal de la API es manejar la carga de grandes volúmenes de datos de manera eficiente. En lugar de una simple subida de archivos, el proceso es el siguiente:
+Actualmente, se han completado las siguientes secciones:
 
-1.  La API recibe un archivo CSV a través de un endpoint.
-2.  El código lee el archivo en memoria, línea por línea.
-3.  Las filas se agrupan en lotes (chunks) de hasta 1000 registros.
-4.  Cada lote se convierte a formato JSON y se inserta en BigQuery mediante el método de "streaming inserts".
-5.  Este proceso se repite hasta que se han insertado todas las filas del archivo.
-
-Este enfoque cumple con todos los requisitos de la Sección 1 en una sola operación.
+*   **Sección 1: API de Ingesta de Datos**
+*   **Sección 2: API de Métricas y Consultas**
 
 ---
 
