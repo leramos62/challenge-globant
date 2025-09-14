@@ -1,4 +1,4 @@
-#definicion de estructura de schemas para validacion fastapi
+#definicion de estructura de schemas para validacion fastapi 
 from pydantic import BaseModel
 from datetime import datetime
 

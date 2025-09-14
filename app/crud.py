@@ -35,7 +35,7 @@ def process_and_insert_csv_in_batches(file_content: bytes, table_name: str):
     # --- 3. lee y procesa  archivo csv ---
     try:
         decoded_content = file_content.decode('utf-8') # decodifica los archivos a texto
-        csv_reader = csv.reader(io.StringIO(decoded_content)) # lee el texto como un archivo csv
+        csv_reader = csv.reader(io.StringIO(decoded_content)) # lee el texto como un archivo csv 
 
         # bucle en cada fila
         for row in csv_reader:
