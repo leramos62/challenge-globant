@@ -1,13 +1,13 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from . import crud
-
+#Documentacion
 # Inicializamos la aplicación FastAPI 
 app = FastAPI(title="Ap que recibe archivos csv")
 
 @app.post("/upload-csv/{table_name}", tags=["Carga de Archivos CSV"])
 async def upload_csv_endpoint(table_name: str, file: UploadFile = File(...)):
     """
-    carga tu wea
+    carga tu archivo csv 
     """
     # Vvalidacion ed tablas permitidas
     allowed_tables = ["departments", "jobs", "hired_employees"]
