@@ -7,9 +7,9 @@ app = FastAPI(title="Ap que recibe archivos csv")
 @app.post("/upload-csv/{table_name}", tags=["Carga de Archivos CSV"])
 async def upload_csv_endpoint(table_name: str, file: UploadFile = File(...)):
     """
-    carga tu archivo csv 
+    carga tu archivo csv directamente
     """
-    # Vvalidacion ed tablas permitidas
+    # Validacion de tablas permitidas
     allowed_tables = ["departments", "jobs", "hired_employees"]
     if table_name not in allowed_tables:
         raise HTTPException(status_code=400, detail=f"Nombre de tabla no válido. Usa uno de: {allowed_tables}")
