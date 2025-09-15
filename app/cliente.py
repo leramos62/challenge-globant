@@ -1,10 +1,12 @@
-# app/cliente.py (versión limpia)
+# Documentacion en comentarios
+# importacion de librerias
 import os
 from google.cloud import bigquery
 from dotenv import load_dotenv
 
 load_dotenv()
 
+# Obtencion y asignacion de variables
 client = bigquery.Client()
 
 PROJECT_ID = os.getenv("GCP_PROJECT_ID")
